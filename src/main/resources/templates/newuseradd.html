@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/UserRegistration.css}">
+<link rel="icon" th:href="@{/css/newuser.png}">
+<script type="text/javascript" src="UserRegistration.js"></script>
+</head>
+<body>
+ <div class="form-container">
+        <h2> New User Registration </h2>
+        
+         <div th:if="${message != null}" class="message">
+        <p class="error-message" th:text="${message}" ></p>
+    </div>
+    <form th:action="@{newuseradd}"method="post" th:object= "${adminuseremployee}">
+    
+     <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="name" name="name" th:file= "*{name}" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" th:file="*{password}" required>
+    </div>
+    
+     <div class="form-group">
+                <label for="Roles">Roles:</label>
+                <select id="Roles" class="dropdown" name="role" th:field="*{role}">
+                   <option value="Employee" th:selected="*{role} == 'Employee'">Employee</option>
+                    <option value="Manager" th:selected="*{role} == 'Manager'">Manager</option>
+                    <option value="Admin" th:selected="*{role} == 'Admin'">Admin</option>
+                </select>
+            </div>
+            
+       <button type="submit">Sign-Up</button>
+    
+    </form>
+                   
+        
+    </div>
+    
+    </body>
+    </html>

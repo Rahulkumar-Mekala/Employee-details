@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Details</title>
+<link th:href="@{/css/useralldetails.css}" rel="stylesheet">
+<link rel="icon" th:href="@{/css/managerviewdetails.png}">
+
+
+ <div th:if="${message != null}" class="message">
+        <p class="error-message" th:text="${message}" ></p>
+    </div>
+<title> Manager View All Details </title>
+<style>
+/* Styles as per your design */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #4CAF50;
+	color: white;
+	padding: 20px;
+	text-align: center;
+}
+
+.section {
+	margin: 20px auto;
+	width: 80%;
+	border-radius: 5px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 15px;
+}
+
+.pending {
+	background-color: #e3f9e5;
+}
+
+.approved {
+	background-color: #e1f5fe;
+}
+
+.rejected {
+	background-color: #ffe0e0;
+}
+
+h3 {
+	color: #333;
+	text-align: center;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+	text-align: center;
+	border: 1px solid black;
+}
+
+th {
+	background-color: #4CAF50;
+	color: white;
+}
+
+td a {
+	text-decoration: none;
+	color: white;
+	padding: 6px 12px;
+	border-radius: 4px;
+	margin: 0 5px;
+	display: inline-block;
+}
+
+.no-requests {
+	font-size: 1.1em;
+	text-align: center;
+	color: #ff6347;
+	margin: 10px 0;
+}
+
+.welcome-message {
+	text-align: center;
+	font-family: serif;
+	color: blue;
+	margin: 30px;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>Employee Management</h1>
+    </header>
+
+    <div class="section pending">
+        <h3>Pending Requests</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Approve</th>
+                    <th>Reject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${pendingrequest}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td th:text="${user.status}"></td>
+                    <td>
+                        <a class= "approved" th:href="@{/approve(id=${user.id})}">Approve</a>
+                    </td>
+                    <td>
+                        <a class="rejected" th:href="@{/reject(id=${user.id})}">Reject</a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(pendingrequest)}">
+                    <td colspan="7" class="no-requests">No pending requests found.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section approved">
+		<h3>Approved Requests</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Employee ID</th>
+					<th>Employee Name</th>
+					<th>Password</th>
+					<th>Role</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${approveemployee}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.password}"></td>
+					<td th:text="${user.role}"></td>
+					<td th:text="${user.status}"></td>
+				</tr>
+                <tr th:if="${#lists.isEmpty(approveemployee)}">
+                    <td colspan="5" class="no-requests">No approved requests found.</td>
+                </tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="section rejected">
+		<h3>Rejected Requests</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Employee ID</th>
+					<th>Employee Name</th>
+					<th>Password</th>
+					<th>Role</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${rejectedemployee}">
+					<td th:text="${user.id}"></td>
+					<td th:text="${user.name}"></td>
+					<td th:text="${user.password}"></td>
+					<td th:text="${user.role}"></td>
+					<td th:text="${user.status}"></td>
+				</tr>
+              <tr th:if="${#lists.isEmpty(rejectedemployee)}">
+                    <td colspan="5" class="no-requests">No rejected requests found.</td>
+                </tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Update Details</title>
+<link rel="icon" th:href= @{/css/updatedetails.png}>
+
+<link rel="stylesheet" th:href="@{/css/UserRegistration.css}">
+<script type="text/javascript" src="UserRegistration.js"></script>
+</head>
+<body>
+ <div class="form-container">
+   <div th:if="${error != null}" class="message">
+        <p class="error-message" th:text="${error}" ></p>
+    </div>
+        <h2> Update User Registration </h2>
+        
+        error
+         <div th:if="${message != null}" class="message">
+        <p class="error-message" th:text="${message}" ></p>
+    </div>
+      <!-- User Registration Form -->
+<form id="update" th:action="@{userupdateemplyee}" method="post" th:object= "${userupdateemployee}" >
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="name" name="name" th:file= "*{name}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" th:file="*{password}" required>
+    </div>
+
+          
+    
+    <button type="submit">Sign-Up</button>
+</form>
+
+       
+    </div>
+</body>
+</html>

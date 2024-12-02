@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" th:href= "@{/css/viewdetails.png}">
+<title>Employee Details View Details </title>
+
+
+
+</head>
+<body>
+<div th:if="${message != null}" class="message">
+        <p class="error-message" th:text="${message}" ></p>
+    </div>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        text-align: center;
+    }
+    table {
+        margin: 20px auto;
+        width: 80%; 
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+    th {
+        background-color: #0073e6;
+        color: white;
+        font-weight: bold;
+    }
+    td {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+    button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #005bb5;
+    }
+    .actions {
+        margin-top: 20px;
+    }
+</style>
+<table>
+    <thead>
+        <tr>
+           
+            <th>Employee Name:</th>
+            <th>Employee  password:</th>
+            <th>Employee Role:</th>
+            <th>Employee Status:</th>
+            
+             <th>Update EmployeeData</th>
+             
+            
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${user != null}">
+    <td th:text= "${user.name}"> </td>
+    <td th:text= "${user.password}">
+    <td th:text= "${user.role}"></td>
+    <td th:text= "${user.status}"></td>
+  <td> <a id="updatebutton" th:href="@{updateemployee}" ><button>Update</button></a></td>
+              
+            
+        </tr>
+  
+     </tbody>
+      
+     </table>
+      <a id="updatebutton" href="/logout"><button>Logout </button></a>
+     </body>
+     </html>

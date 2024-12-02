@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin Login</title>
+    <link rel="icon" th:href= "@{/css/adminlogin.png}">
+    <link rel="stylesheet" th:href="@{/css/UserRegistration.css}">
+</head>
+<body>
+   <div class="form-container">
+        <h2>Admin Authentication </h2>
+        <div th:if="${error != null}" class="message">
+        <p class="error-message" th:text="${error}"></p>
+        <p th:if="${message}" th:text="${message}" class="alert alert-success"></p>
+    </div>
+        
+        
+        <form id="register" th:action="@{adminloginpage}" method="post" th:object= "${admin}">
+            <div class="form-group">
+                <label for="username">Username / Email Address :</label>
+                <input type="text" id="name" name="name"  th:file= "*{name}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" th:file= "*{password}" required>
+            </div>
+
+        
+            
+
+            <button type="submit">Sign-in</button><br><br>
+             
+        </form>
+  
+      
+    
+    </div>
+
+</body>
+</html>

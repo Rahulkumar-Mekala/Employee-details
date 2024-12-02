@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/adminlogout.css}">
+</head>
+<body>
+<div th:if="${message != null}" class="message">
+    <p class="success-message" th:text="${message}"></p>
+</div>
+<br>
+   <a th:href="@{registerform}"><button>UserLogin Page</button></a>
+   <a th:href="@{Adminlogout}"><button> User Logout</button></a>
+  
+</body>
+
+</html>

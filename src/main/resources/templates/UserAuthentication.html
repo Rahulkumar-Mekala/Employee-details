@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" th:href="@{/css/login.png}">
+    <link rel="stylesheet" th:href="@{/css/UserRegistration.css}">
+</head>
+<body>
+   <div class="form-container">
+    
+      <div th:if="${message != null}" class="message">
+        <p class="error-message" th:text="${message}" ></p>
+    </div>
+        <h2>User Authentication </h2>
+        
+         <div th:if="${error != null}" class="message">
+        <p class="error-message" th:text="${error}" ></p>
+    </div>
+    
+        
+        <form id="register" th:action="@{loginpage}" method="post" th:object= "${employee}">
+            <div class="form-group">
+                <label for="username">Username / Email Address :</label>
+                <input type="text" id="name" name="name"  th:file= "*{name}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" th:file= "*{password}" required>
+            </div>
+
+        
+            
+
+            <button type="submit">Sign-in</button><br><br>
+             
+        </form>
+   <a th:href="@{registerform}" target="black">  <button type="submit">Sign-Up</button> </a>
+       <br><br>
+    
+    </div>
+
+</body>
+</html>

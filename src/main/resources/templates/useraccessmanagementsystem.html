@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+   <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Admin, User, and Manager Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{Adminform}">Admin Page</a></li>
+              <li><a th:href="@{loginform}">User Page</a></li>
+
+                <li><a th:href="@{managerform}">Manager Page</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="admin">
+            <div class="card">
+                <h2>Admin Page</h2>
+                <p>Admin controls the overall system, manages users, and handles system configurations.</p>
+                <a th:href="@{Adminform}">Go to Admin Page</a>
+            </div>
+        </section>
+
+        <section id="user">
+            <div class="card">
+                <h2>User Page</h2>
+                <p>Users can access their profile, view their details, and manage their own settings.</p>
+                <a th:href="@{loginform}">Go to User Page</a>
+            </div>
+        </section>
+
+        <section id="manager">
+            <div class="card">
+                <h2>Manager Page</h2>
+                <p>Managers can oversee registrations, approve users, and monitor ongoing processes.</p>
+                <a th:href="@{managerform}">Go to Manager Page</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your Website | All rights reserved.</p>
+    </footer>
+</body>
+</html>
